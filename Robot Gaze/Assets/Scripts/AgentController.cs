@@ -10,8 +10,17 @@ public class AgentController : MonoBehaviour
     public GameObject player;
     public GameObject DestinationPosition;
     public NavMeshAgent agent;
+    public float spawn_distance = 1.0f;
     private Vector3 StartingPosition;
     private bool signal_check;
+    private bool execute_check;
+
+    [SerializeField]
+    private GameObject cubePrefab;
+    [SerializeField]
+    private float signal_distance = 4.0f;
+    [SerializeField]
+    private float execute_distance = 2.0f;
 
 
     // Start is called before the first frame update
@@ -20,6 +29,7 @@ public class AgentController : MonoBehaviour
        
         StartingPosition = robot.transform.position;
         signal_check = false;
+        execute_check = false;
     }
 
     // Update is called once per frame
@@ -39,16 +49,31 @@ public class AgentController : MonoBehaviour
             robot.transform.position = StartingPosition;
         }
 
-        if(Distance_robot_player < 4 && !signal_check)
+        if(Distance_robot_player < signal_distance && !signal_check)
         {
             signal_check = true;
             StartCoroutine(IdleToGazeLeft());
             //animator.SetFloat("Speed", 1.0f);
         }
-        else if(Distance_robot_player > 4)
+        else if(Distance_robot_player > signal_distance)
         {
             animator.SetFloat("GazePosition", 0.0f);
+            
             signal_check = false;
+            execute_check = false;
+
+            GameObject cube = GameObject.Find("cube_block");
+            if(cube)
+            {
+                Destroy(cube.gameObject);
+                Debug.Log("Cube Destroyed");
+            }
+        }
+
+        if(Distance_robot_player < execute_distance && !execute_check)
+        {
+            execute_check = true;
+            Spawn();
         }
     }
 
@@ -62,5 +87,16 @@ public class AgentController : MonoBehaviour
             animator.SetFloat("GazePosition", i);
             yield return wait;
         }
+    }
+
+    private void Spawn()
+    {
+        Vector3 robot_transform = robot.transform.position;
+        robot_transform.y = 0;
+        robot_transform.z = robot_transform.z + spawn_distance;
+
+        Debug.Log("Cube Spawned");
+        GameObject cube = Instantiate(cubePrefab, robot_transform , robot.transform.rotation);
+        cube.name = "cube_block";
     }
 }
