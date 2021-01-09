@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/main_scene.unity
     guid: 26505d63dbcfd4f47a35cd70d03d497c
+  - enabled: 1
+    path: Assets/Scenes/duplicate_scene.unity
+    guid: 28e6d4e1168b1c147b721931c9cc91d3
   m_configObjects: {}

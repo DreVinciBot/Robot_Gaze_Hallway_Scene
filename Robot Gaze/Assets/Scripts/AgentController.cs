@@ -44,7 +44,7 @@ public class AgentController : MonoBehaviour
         float Distance_robot_player = Vector3.Distance(robot.transform.position, player.transform.position);
 
 
-        if(Distance_robot_goal < 0.1)
+        if(Distance_robot_goal < 0.5)
         {
             robot.transform.position = StartingPosition;
         }
