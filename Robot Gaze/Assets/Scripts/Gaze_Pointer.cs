@@ -46,7 +46,7 @@ public class Gaze_Pointer : MonoBehaviour
                 if (hit.collider.gameObject.name == "quantum_eyes")
                 {
                     rayCastObject.transform.position = hit.point;
-                    rayCastObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                    //rayCastObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
                 }
             }
         }
