@@ -9,6 +9,7 @@ public class CamSwitch : MonoBehaviour
     public GameObject cam2;
     public GameObject cam3;
     public GameObject cam4;
+    public GameObject cam5;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class CamSwitch : MonoBehaviour
         cam2.SetActive(false);
         cam3.SetActive(false);
         cam4.SetActive(false);
+        cam5.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,6 +29,8 @@ public class CamSwitch : MonoBehaviour
             cam2.SetActive(false);
             cam3.SetActive(false);
             cam4.SetActive(false);
+            cam5.SetActive(false);
+
         }
         else if (Input.GetButtonDown("Key2"))
         {
@@ -34,6 +38,7 @@ public class CamSwitch : MonoBehaviour
             cam2.SetActive(true);
             cam3.SetActive(false);
             cam4.SetActive(false);
+            cam5.SetActive(false);
         }
         else if (Input.GetButtonDown("Key3"))
         {
@@ -41,6 +46,7 @@ public class CamSwitch : MonoBehaviour
             cam2.SetActive(false);
             cam3.SetActive(true);
             cam4.SetActive(false);
+            cam5.SetActive(false);
         }
         else if (Input.GetButtonDown("Key4"))
         {
@@ -48,6 +54,15 @@ public class CamSwitch : MonoBehaviour
             cam2.SetActive(false);
             cam3.SetActive(false);
             cam4.SetActive(true);
+            cam5.SetActive(false);
+        }
+        else if (Input.GetButtonDown("Key5"))
+        {
+            cam1.SetActive(false);
+            cam2.SetActive(false);
+            cam3.SetActive(false);
+            cam4.SetActive(false);
+            cam5.SetActive(true);
         }
     }
 }

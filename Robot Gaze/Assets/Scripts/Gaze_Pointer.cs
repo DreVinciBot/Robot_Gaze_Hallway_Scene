@@ -39,14 +39,14 @@ public class Gaze_Pointer : MonoBehaviour
         {
             if (hit.collider != null)
             {
-
                 lr.SetPosition(1, new Vector3(0, 0, hit.distance));
-                //Debug.Log("Hit " + hit.collider.gameObject.name);
+                //lr.SetPosition(1, hit.point);
+                Debug.Log("Hit " + hit.collider.gameObject.name);
 
-                if (hit.collider.gameObject.name == "quantum_eyes")
+                if (hit.collider.gameObject.name == "quantum_eyes_system")
                 {
                     rayCastObject.transform.position = hit.point;
-                    rayCastObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                    //rayCastObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
                 }
             }
         }
